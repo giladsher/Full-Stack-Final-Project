@@ -1,0 +1,18 @@
+#itemQuantity {
+    width: 25%;
+}
+img {
+    height: 100px;
+    width:100px;
+    object-fit: contain;
+}
+img:hover {
+    cursor: pointer;
+}
+.btn {
+    color: #fff;
+}
+input {
+    background-image: url('../../assets/mahoganyWood.jpg');
+    color: #fff;
+}

@@ -1,0 +1,16 @@
+<div *ngIf="!localStorage.getItem('token')">
+  
+</div>
+<div *ngIf="cart" class="text-center container">
+  <h1>Your Cart</h1>
+  <h2>Total Cost: {{ localStorage.getItem('sumCost') }}$</h2>
+  <ngb-accordion [closeOthers]="true" activeIds="1">
+    <ngb-panel *ngFor="let item of cart" id="1" title="{{ item.description }}">
+      <ng-template ngbPanelContent>
+        <img src="{{ item.picture }}" style="height: 100px; width: 100px; object-fit: contain;" alt="A picture of a dog">
+        <p>Item Cost: <em>{{ item.cost }}</em> * Amount: <em>{{ item.totalAmount }}</em> = Total Price: <em>{{ item.totalCost }}</em></p>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+      
+</div>

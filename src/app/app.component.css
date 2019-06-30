@@ -1,0 +1,40 @@
+i:hover {
+    cursor: pointer;
+    transform: rotate(360deg) scale(1.3);
+    transition: transform 0.9s ease-out;
+}
+.fa-facebook-square {
+    color: rgb(66,103,178);
+}
+.fa-github {
+    color: rgb(1,1,1);
+}
+.fa-linkedin {
+    color: rgb(0,119,181);
+}
+.fa-at {
+    color: rgb(219,72,59);
+}
+.relative {
+    position: relative;
+}
+.iconsDiv {
+    width: 100%;
+    position: absolute;
+    bottom:-100px;
+    text-align: center;
+    background-image: url("../assets/birchWood.jpg");
+    background-repeat: round;
+}
+.btn {
+    background-image: url('../assets/mahoganyWood.jpg');
+    color: #fff;
+    border-radius: 25%;
+    font-size: 4rem;
+}
+.centralize {
+    padding-top: 15%;
+}
+h1 {
+    font-size: 5rem;
+}

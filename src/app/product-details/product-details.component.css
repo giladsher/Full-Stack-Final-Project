@@ -1,0 +1,12 @@
+.container {
+    background-image: url("src/assets/mahoganyWood.jpg");
+    color: #fff;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.btn {
+    background-image: url("src/assets/birchWood.jpg");
+    color: rgb(57,20,2);
+}

@@ -1,0 +1,10 @@
+form {
+    background-image: url('../../assets/birchWood.jpg');
+}
+input {
+    background-image: url('../../assets/mahoganyWood.jpg');
+    color: #fff;
+}
+.btn {
+    color: #fff;
+}

@@ -1,0 +1,10 @@
+<nav class="nav nav-pills bg-dark flex-column flex-sm-row mb-4">
+    <a routerLink="/home" class="flex-sm-fill text-sm-center navbar-brand m-0">Gilad Sher - Full-Stack Developer</a>
+    <a *ngIf="localStorage.getItem('admin') == 'true'" routerLink="/manage-products" routerLinkActive="active" class="flex-sm-fill text-sm-center nav-link">Manage Products</a>
+    <a routerLink="/home" routerLinkActive="active" class="flex-sm-fill text-sm-center nav-link">Home</a>
+    <a routerLink="/about" routerLinkActive="active" class="flex-sm-fill text-sm-center nav-link">About Us</a>
+    <a routerLink="/contact" routerLinkActive="active" class="flex-sm-fill text-sm-center nav-link">Contact Us</a>
+    <a *ngIf="localStorage.getItem('username') == null" (click)="openSignUp()" id="signup" class="flex-shrink-1 text-sm-center nav-link">Sign Up</a>
+    <a *ngIf="localStorage.getItem('username') == null" (click)="openLogIn()" id="login" class="flex-shrink-1 text-sm-center nav-link">Log In</a>
+    <a *ngIf="localStorage.getItem('username') != null" (click)="logOut()" id="logout" class="flex-shrink-1 text-sm-center nav-link">Log Out</a>
+</nav>

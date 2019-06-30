@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FrontEndProject';
+  firstTime: boolean = true;
+  title = 'Final Project';
+  
+  setTime() {
+    this.firstTime = false;
+  }
 }

@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="container pb-3">
+    <div class="modal-header">
+        <h4 class="modal-title">Sign Up!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <br>
+    <ngb-alert *ngIf="messageActive" [type]="message.type">{{ message.message }}</ngb-alert>
+    <div class="form-group row">
+      <label for="txtEmail" class="col-sm-2 col-form-label">
+        Email:
+      </label>
+      <div class="col-sm-10">
+        <input id="txtEmail" type="text" #email formControlName="email" placeholder="Email:" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txtUsername"  class="col-sm-2 col-form-label">
+        Username:
+      </label>
+      <div class="col-sm-10">
+        <input id="txtUsername" #username type="text" formControlName="username" placeholder="Username:" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txtPassword" class="col-sm-2 col-form-label">
+        Password:
+      </label>
+      <div class="col-sm-10">
+        <input id="txtPassword" #password type="password" formControlName="password" placeholder="Password:" class="form-control" maxlength="30">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txtConfirmPassword" class="col-sm-2 col-form-label">
+        Confirm Password:
+      </label>
+      <div class="col-sm-10">
+        <input id="txtConfirmPassword" type="password" #confirmPassword formControlName="confirmPassword" placeholder="Confirm Password:" class="form-control" maxlength="30">
+      </div>
+    </div>
+      <div class="col-auto mt-4">
+        <button type="submit" (click)="signUp(email.value, username.value, password.value)" [disabled]="!formGroup.valid" class="btn">Sign Up!</button>
+      </div>
+    </div>
+</form>

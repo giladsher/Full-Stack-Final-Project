@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="text-center">
+        <h4>Total Cost: {{ costSum }} , Number Of Items: {{ numberOfItems }}</h4>
+        <button class="btn mr-4" (click)="clearCart()">Clear Cart</button>
+        <button class="btn" [disabled]="numberOfItems == 0" (click)="sendToCart()" routerLink="/checkout" id="cartButton"> Proceed to Checkout</button>
+    </div>
+    <br>
+    <form>
+        <div class="form-group form-inline">
+            Full text search: <input class="form-control ml-2" type="text" [formControl]="filter" (change)="search()"/>
+        </div>
+    </form>
+    <br>
+    <ngb-alert *ngIf="messageActive" [type]="messageType" class="text-center">{{ message }}</ngb-alert>
+    <div class="table-responsive">
+        <p *ngIf="filter.value">Showing results for: {{ filter.value }}</p>
+        <table class="table table-hover table-striped table-bordered text-center">
+            <thead>
+                <th>Picture</th>
+                <th>Description</th>
+                <th>Cost</th>
+                <th>Quantity</th>
+                <th>Total Amount</th>
+                <th>Total Cost</th>
+                <th colspan="2">Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of (products | filter: filter.value) | paginate: { itemsPerPage: 5, currentPage:p}">
+                    <td><img src="{{item.picture}}" alt="A picture of a dog" (click)="showProductDetails(item._id)"></td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.cost }}$</td>
+                    <td><input type="number" min="0" #f id="itemQuantity" class="text-center" value="0"></td>
+                    <td>{{ item.totalAmount || 0 }}</td>
+                    <td>{{ item.totalCost || 0 }}$</td>
+                    <td><button class="btn" (click)="actionOnItems('add', item, f.value)">Add To Cart</button></td>
+                    <td><button class="btn" (click)="actionOnItems('remove', item, f.value)">Remove From Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="pagination" class="text-center">
+        <pagination-controls style="color: rgb(42,8,0)" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

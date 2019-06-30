@@ -1,0 +1,109 @@
+<!-- Accordion New Product Form -->
+<div class="container">
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
+      <ngb-panel title="Add New Product">
+        <ng-template ngbPanelContent>
+            <form [formGroup]="formGroup" (ngSubmit)="addProduct(picture.value, description.value, cost.value)">
+                <div class="container mt-5">
+                  <div class="form-group row">
+                    <label for="txtPicture" class="col-sm-2 col-form-label" ngbTooltip="Required">
+                      <span class="required">*</span>Picture:
+                    </label>
+                    <div class="col-sm-10">
+                      <button (click)="openModal(content)" class="col-lg-12 btn" type="button">Click to Choose a Picture</button>
+                      <input
+                      readonly
+                      id="txtPicture"
+                      type="text"
+                      formControlName="picture"
+                      placeholder="Select a Picture:"
+                      class="form-control col-lg-12"
+                      #picture
+                      />
+                    <div class="text-center"><img id="selectedImage" src="" alt=""></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="txtDescription" class="col-sm-2 col-form-label" ngbTooltip="Required">
+                    <span class="required">*</span>Description:
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      id="txtDescription"
+                      type="text"
+                      formControlName="description"
+                      placeholder="Description:"
+                      class="form-control"
+                      #description
+                    />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="txtCost" class="col-sm-2 col-form-label" ngbTooltip="Required">
+                    <span class="required">*</span>Cost:
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      id="txtCost"
+                      type="text"
+                      formControlName="cost"
+                      placeholder="Cost:"
+                      class="form-control"
+                      #cost
+                    />
+                    </div>
+                </div>
+                <div class="col-auto mt-4 text-center">
+                  <button
+                    type="submit"
+                    [disabled]="!formGroup.valid"
+                    class="btn"
+                  >
+                    Add Product
+                  </button>
+                </div>
+            </div>
+<!-- MODAL -->
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title">Pictures</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <img (click)="selectImage(img)" (click)="modal.dismiss('click')" width="300px" height="300px" style="display:inline" *ngFor="let img of pictures" src="{{ img.path }}" alt="{{ img.name }}">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" (click)="modal.close('Close click')">Close</button>
+              </div>
+            </ng-template>
+          </form>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+</div>
+
+<!-- Table of Products -->
+<br><br>
+<h3 class="text-center">Table of Products</h3>
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="text-center">
+            <th>Picture</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th class="text-center" colspan="2">Actions</th>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let product of products">
+                <td class="text-center"><img src="{{ product.picture }}" alt="Picture of a dog"></td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.cost }}</td>
+                <td class="text-center"><button class="btn" (click)="deleteProduct(product._id)">Delete Product</button></td>
+                <td class="text-center"><button class="btn">Edit Product</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
