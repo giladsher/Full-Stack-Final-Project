@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-size: 16px;
+}
+body {
+    background-image: url('../src/assets/birchWood.jpg');
+    background-repeat: round;
+}
+.btn {
+    background-image: url('../src/assets/mahoganyWood.jpg');
+    color: #fff;
+}
